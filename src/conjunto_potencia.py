@@ -26,11 +26,11 @@ class VisualApp:
         self.entry.pack(pady=10)
 
         # Botón para mostrar el conjunto potencia
-        self.show_button = tk.Button(root, text="Mostrar Conjunto Potencia", command=self.show_powerset)
+        self.show_button = tk.Button(root, text="Mostrar Conjunto Potencia", command=self.show_powerset, bg="#44E842" ,fg="white")
         self.show_button.pack(pady=10)
 
         # Botón para mostrar los pasos
-        self.steps_button = tk.Button(root, text="Pasos", command=self.show_steps)
+        self.steps_button = tk.Button(root, text="Pasos", command=self.show_steps, bg="#8B0000", fg="white")
         self.steps_button.pack(pady=10)
 
         # Lienzo para dibujar los círculos
