@@ -17,8 +17,9 @@ class VisualApp:
         self.root = root
         self.root.title("Conjunto Potencia Visual")
         self.set_icon()
-        self.center_window(850, 600)
-
+        self.center_window(850, 700)
+        self.root.state('zoomed')  # Maximiza la ventana al iniciar
+        
         # Fuentes utilizadas en la aplicación
         main_font = ("Montserrat", 10, "normal")
         label_font = ("Montserrat", 14, "bold")  # Fuente más grande para la etiqueta principal
@@ -83,24 +84,27 @@ class VisualApp:
 
         # Esperar a que el canvas se haya renderizado para obtener las dimensiones correctas
         self.root.update_idletasks()
-        
+
         subsets = list(powerset(elements))
         num_subsets = len(subsets)
 
-        radius = max(10, min(self.canvas.winfo_width(), self.canvas.winfo_height()) / (1.5 * num_subsets))
+        # Ajustar el radio y la distancia de los círculos en función del tamaño del canvas
+        radius = max(20, min(self.canvas.winfo_width(), self.canvas.winfo_height()) / (2.5 * num_subsets))
+        distance = min(self.canvas.winfo_width(), self.canvas.winfo_height()) / 2.6  # Distancia desde el centro
         colors = self.generate_colors(num_subsets)
         angle_step = 2 * math.pi / num_subsets
         center_x, center_y = self.canvas.winfo_width() // 2, self.canvas.winfo_height() // 2
 
         for i, subset in enumerate(subsets):
             angle = i * angle_step
-            x = center_x + 200 * math.cos(angle)
-            y = center_y + 200 * math.sin(angle)
+            x = center_x + distance * math.cos(angle)
+            y = center_y + distance * math.sin(angle)
             x, y = min(max(radius, x), self.canvas.winfo_width() - radius), min(max(radius, y), self.canvas.winfo_height() - radius)
             subset_text = ', '.join(subset) if subset else '∅'
             font_size = self.calculate_font_size(subset_text, radius)
             self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, fill=colors[i], outline=colors[i])  # Misma coloración para relleno y borde
             self.canvas.create_text(x, y, text=subset_text, font=("Arial", font_size), fill='black')
+
 
     def show_steps(self):
         elements = [e.strip() for e in self.entry.get().split(',') if e.strip()]
