@@ -1,3 +1,6 @@
+# Inspirado de https://www.disfrutalasmatematicas.com/conjuntos/conjunto-potencia-creador.html
+# Creado por: Alejandro Soto y Jeffry Valverde
+
 import tkinter as tk
 from tkinter import messagebox, scrolledtext
 from itertools import chain, combinations
@@ -39,7 +42,7 @@ class VisualApp:
         
     def set_icon(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        icon_path = os.path.join(script_dir, '..' ,'iconos', 'conjunto.ico')
+        icon_path = os.path.join(script_dir ,'iconos', 'conjunto.ico')
         icon_path = os.path.abspath(icon_path)
         if os.path.exists(icon_path):
             try:
@@ -159,7 +162,7 @@ class VisualApp:
         
     def set_icon_for_window(self, window):
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        icon_path = os.path.join(script_dir, '..' ,'iconos', 'conjunto.ico')
+        icon_path = os.path.join(script_dir,'iconos', 'conjunto.ico')
         icon_path = os.path.abspath(icon_path)
         if os.path.exists(icon_path):
             try:
