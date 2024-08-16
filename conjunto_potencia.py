@@ -1,6 +1,3 @@
-# Inspirado de https://www.disfrutalasmatematicas.com/conjuntos/conjunto-potencia-creador.html
-# Creado por: Alejandro Soto y Jeffry Valverde
-
 import tkinter as tk
 from tkinter import messagebox, scrolledtext
 from itertools import chain, combinations
@@ -41,11 +38,17 @@ class VisualApp:
         self.canvas.pack(pady=10, fill=tk.BOTH, expand=True)
         
     def set_icon(self):
-        icon_path = os.path.join('iconos', 'conjunto.ico')
-        try:
-            self.root.iconbitmap(icon_path)
-        except Exception as e:
-            messagebox.showerror("Error", f"No se pudo cargar el ícono: {e}")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        icon_path = os.path.join(script_dir, 'iconos', 'conjunto.ico')
+        icon_path = os.path.abspath(icon_path)
+        if os.path.exists(icon_path):
+            try:
+                self.root.iconbitmap(icon_path)
+            except Exception as e:
+                messagebox.showerror("Error", f"No se pudo cargar el ícono: {e}")
+        else:
+            messagebox.showerror("Error", f"El ícono no existe en la ruta: {icon_path}")
+
 
     def generate_colors(self, num_colors):
         # Colores pastel para los círculos
@@ -155,11 +158,17 @@ class VisualApp:
 
         
     def set_icon_for_window(self, window):
-        icon_path = os.path.join('iconos', 'conjunto.ico')
-        try:
-            window.iconbitmap(icon_path)
-        except Exception as e:
-            messagebox.showerror("Error", f"No se pudo cargar el ícono: {e}")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        icon_path = os.path.join(script_dir, 'iconos', 'conjunto.ico')
+        icon_path = os.path.abspath(icon_path)
+        if os.path.exists(icon_path):
+            try:
+                self.root.iconbitmap(icon_path)
+            except Exception as e:
+                messagebox.showerror("Error", f"No se pudo cargar el ícono: {e}")
+        else:
+            messagebox.showerror("Error", f"El ícono no existe en la ruta: {icon_path}")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
