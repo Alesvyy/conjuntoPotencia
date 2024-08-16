@@ -1,3 +1,6 @@
+# Inspirado de https://www.disfrutalasmatematicas.com/conjuntos/conjunto-potencia-creador.html
+# Creado por: Alejandro Soto y Jeffry Valverde
+
 import tkinter as tk
 from tkinter import messagebox, scrolledtext
 from itertools import chain, combinations
